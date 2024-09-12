@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Spill</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Spill the tea and confess your secrets anonymously.">
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="static/css/style.css">
+    </head>
+    <body>
+        <header>
+            <h2><span id="spill-home">Spill</span></h2>
+            <nav>
+                <div>
+                    <img src="images/hamburger.png" alt="Hamburger menu" id="hamburger">
+                    <img src="images/close.png" alt="X to close" class="inactive" id="close-menu">
+                    <div class="menu-content inactive">
+                        <p class="menu-label">Menu</p>
+                        <ul>
+                            <li>Home</li>
+                            <li>Spill your tea</li>
+                            <li>Random</li>
+                            <li>About</li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="container">
+            <main>
+            {% block main %}
+            {% endblock %}
+            </main>
+        </div>
+        <footer>
+            <div class="foot-contact">
+                <p>E-mail: <a href="mailto:fake.email@spill.com">fake.email@spill.com</a></p>
+            </div>
+            <div class="copy">
+                <p>&copy; 2024 Spill. All rights reserved.</p>
+            </div>
+        </footer>
+    </body>
+</html>

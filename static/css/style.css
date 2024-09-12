@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    color: #ff10f0;
+    width: 100%;
+    padding: 10px 20px;
+    position: relative;
+}
+
+#hamburger {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    z-index: 2;
+    cursor: pointer;
+}
+
+#close-menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.confession-container {
+    margin: 20px 0;
+    padding: 0 10px 10px 10px;
+    background-color: rgba(255,16,240,0.3);
+    box-shadow: 2px 2px 2px #888;
+}

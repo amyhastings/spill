@@ -5,12 +5,15 @@
 <h1>The tea!</h1>
 
 {% for confession in confessions %}
-<div class="confession-container">
-    <p>"{{ confession.text }}"</p>
-    <p>Comments: {{ confession.comments|length }}</p>
-    <p>Upvotes: {{ confession.get_upvote_count() }}</p>
-    <p>Downvotes: {{ confession.get_downvote_count() }}</p>
-</div>
+<a href="/spill/view/{{ confession.id }}">
+    <div class="confession-container">
+        <p>"{{ confession.text }}"</p>
+        <p>Likes: {{ confession.get_likes_count() }}</p>
+        {% if confession.allow_comments %}
+            <p>Comments: {{ confession.comments|length }}</p>
+        {% endif %}
+    </div>
+</a>
 {% endfor %}
 
 {% endblock %}

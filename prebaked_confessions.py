@@ -4,6 +4,7 @@ confessions = [
         "id" : 0,
         "user_id" : 1,
         "timestamp" : "2024-01-01:19:00",
+        "allow_comments" : True,
         "comments" : [
             {
                 "user_id" : 2,
@@ -14,22 +15,18 @@ confessions = [
                 "text" : "OMG!"
             }
         ],
-        "votes" : [
+        "likes" : [
             {
                 "user_id" : 2,
-                "upvote" : True
             },
             {
                 "user_id" : 3,
-                "upvote" : False
             },
             {
                 "user_id" : 4,
-                "upvote" : False
             },
             {
                 "user_id" : 5,
-                "upvote" : False
             }
         ]
     },
@@ -38,6 +35,7 @@ confessions = [
         "id" : 1,
         "user_id" : 4,
         "timestamp" : "2024-03-04:14:32",
+        "allow_comments" : True,
         "comments" : [
             {
                 "user_id" : 5,
@@ -52,15 +50,13 @@ confessions = [
                 "text" : "Exactly! Maybe OP was just bringing love to the world."
             }
         ],
-        "votes" : [
+        "likes" : [
             {
                 "user_id" : 2,
-                "upvote" : True
             },
             {
                 "user_id" : 3,
-                "upvote" : False
-            }
+            },
         ]
     },
     {
@@ -68,20 +64,20 @@ confessions = [
         "id" : 2,
         "user_id" : 8,
         "timestamp" : "2024-02-15:10:16",
-        "comments" : [
-            {
-                "user_id" : 9,
-                "text": "I think a lot of people do this"
-            },
-        ],
-        "votes" : [
+        "allow_comments" : False,
+        "comments" : [],
+        "likes" : [
             {
                 "user_id" : 2,
-                "upvote" : True
             },
             {
                 "user_id" : 3,
-                "upvote" : False
+            },
+            {
+                "user_id" : 4,
+            },
+            {
+                "user_id" : 5,
             }
         ]
     },
@@ -90,6 +86,7 @@ confessions = [
         "id": 3,
         "user_id" : 10,
         "timestamp" : "2024-05-22:02:32",
+        "allow_comments" : True,
         "comments" : [
             {
                 "user_id" : 11,
@@ -100,15 +97,16 @@ confessions = [
                 "text" : "This is so brave. I'd be too afraid that someone would find it!"
             },
         ],
-        "votes" : [
+        "likes" : [
             {
                 "user_id" : 2,
-                "upvote" : True
             },
             {
                 "user_id" : 3,
-                "upvote" : False
-            }
+            },
+            {
+                "user_id" : 4,
+            },
         ]
     },
     {
@@ -116,6 +114,7 @@ confessions = [
         "id" : 4,
         "user_id" : 13,
         "timestamp" : "2024-04-13:09:16",
+        "allow_comments" : True,
         "comments" : [
             {
                 "user_id" : 14,
@@ -130,14 +129,18 @@ confessions = [
                 "text" : "As long as the sites you're accessing aren't hurting anyone, I say no harm, no foul."
             }
         ],
-        "votes" : [
+        "likes" : [
             {
                 "user_id" : 2,
-                "upvote" : True
             },
             {
                 "user_id" : 3,
-                "upvote" : False
+            },
+            {
+                "user_id" : 4,
+            },
+            {
+                "user_id" : 5,
             }
         ]
     }

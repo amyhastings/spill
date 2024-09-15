@@ -5,16 +5,18 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Spill the tea and confess your secrets anonymously.">
-        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" href="static/css/style.css">
+        <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="/static/css/style.css">
     </head>
     <body>
         <header>
-            <h2><span id="spill-home">Spill</span></h2>
+            <div class="logo">
+                <a href="/"><img src="/static/images/logo2.png" alt="Spill"></a>
+            </div>
             <nav>
-                <div>
-                    <img src="images/hamburger.png" alt="Hamburger menu" id="hamburger">
-                    <img src="images/close.png" alt="X to close" class="inactive" id="close-menu">
+                <div class="nav-small">
+                    <img src="/static/images/hamburger.png" alt="Hamburger menu" id="hamburger">
+                    <img src="/static/images/close.png" alt="X to close" class="inactive" id="close-menu">
                     <div class="menu-content inactive">
                         <p class="menu-label">Menu</p>
                         <ul>
@@ -24,6 +26,12 @@
                             <li>About</li>
                         </ul>
                     </div>
+                </div>
+                <div class="nav-large">
+                    <a href="/">Home</a>
+                    <a href="/spill">Spill your Tea</a>
+                    <a href="/random">Random Tea</a>
+                    <a href="/about">About</a>
                 </div>
             </nav>
         </header>

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<div class="confession-container">
+    <p>"{{ confession.text }}"</p>
+    <p>Likes: {{ confession.get_likes_count() }}</p>
+    {% if confession.allow_comments %}
+        <p>Comments: {{ confession.comments|length }}</p>
+    {% endif %}
+    {% for comment in confession.comments %}
+        <p>{{ comment.text }}</p>
+    {% endfor %}
+    {% if confession.allow_comments %}
+    <form id="comment-form" action="{{ url_for('new_comment', id = confession.id) }}" method="POST">
+        <input name="comment" placeholder="Leave a comment" type="text" autofocus>
+        <button type="submit">Submit</button>
+    </form>
+    {% endif %}
+</div>
+
+{% endblock %}

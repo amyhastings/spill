@@ -5,7 +5,7 @@ from models import Confession, Comment, User
 def bootstrap_confessions():
     confessions_datastore = []
     for confession in confessions:
-        new_confession = Confession(confession["id"], confession["user_id"], confession["text"], confession["allow_comments"])
+        new_confession = Confession(confession["confession_id"], confession["user_id"], confession["text"], confession["allow_comments"])
         for comment in confession["comments"]:
             new_comment = Comment(comment["user_id"], comment["text"])
             new_confession.add_comment(new_comment)

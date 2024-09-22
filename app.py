@@ -29,9 +29,9 @@ def identify_user():
 def home():
     return render_template('home.html', confessions=confessions_datastore)
 
-@app.route("/spill/<int:id>")
-def spill_view(id):
-    confession = confessions_datastore[id]
+@app.route("/spill/<int:confession_id>")
+def spill_view(confession_id):
+    confession = confessions_datastore[confession_id]
     return render_template("individual_spill.html", confession=confession)
 
 # Displays new confession form
@@ -49,16 +49,16 @@ def spilt():
 def new_confession():
     new_confession_text = request.form["confession"]
     allow_comments = request.form["allow_comments"]
-    new_id = len(confessions_datastore) + 1
+    new_confession_id = len(confessions_datastore) + 1
     user_id = 1
-    new_confession = Confession(new_id, user_id, new_confession_text, allow_comments)
+    new_confession = Confession(new_confession_id, user_id, new_confession_text, allow_comments)
     confessions_datastore.append(new_confession)
     return redirect(url_for("spilt"))
 
 
-@app.route("/spill/<int:id>/comment/new", methods=["POST"])
-def new_comment(id):
-    confession = confessions_datastore[id]
+@app.route("/spill/<int:confession_id>/comment/new", methods=["POST"])
+def new_comment(confession_id):
+    confession = confessions_datastore[confession_id]
     if not confession.allow_comments:
         return redirect(url_for("error_page"))
     new_comment_text = request.form["comment"]
@@ -66,25 +66,35 @@ def new_comment(id):
     new_comment = Comment(user_id, new_comment_text)
     confession.add_comment(new_comment)
     print("user adding comment:" + str(user_id))
-    return redirect(url_for("spill_view", id=id))
+    return redirect(url_for("spill_view", confession_id=confession_id))
 
-@app.route("/spill/<int:id>/like")
-def new_like(id):
-    confession = confessions_datastore[id]
+@app.route("/spill/<int:confession_id>/comment/<int:comment_id>/delete", methods=["POST"])
+def delete_comment(confession_id, comment_id):
+    confession = confessions_datastore[confession_id]
+    user_id = session['user_id']
+    comment = confession.get_comment(comment_id)
+    if comment.comment_created_by(user_id):
+        confession.delete_comment(comment)
+    return redirect(url_for("spill_view", confession_id=confession_id))
+
+
+@app.route("/spill/<int:confession_id>/like")
+def new_like(confession_id):
+    confession = confessions_datastore[confession_id]
     user_id = session['user_id']
     confession.add_like(user_id)
     return ""
 
-@app.route("/spill/<int:id>/unlike")
-def remove_like(id):
-    confession = confessions_datastore[id]
+@app.route("/spill/<int:confession_id>/unlike")
+def remove_like(confession_id):
+    confession = confessions_datastore[confession_id]
     user_id = session['user_id']
     confession.remove_like(user_id)
     return ""
 
-@app.route("/spill/<int:id>/likes_count")
-def likes_count(id):
-    likes_count = confessions_datastore[id].get_likes_count()
+@app.route("/spill/<int:confession_id>/likes_count")
+def likes_count(confession_id):
+    likes_count = confessions_datastore[confession_id].get_likes_count()
     return { "likes_count" : likes_count }
 
 @app.route("/error")

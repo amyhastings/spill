@@ -1,8 +1,8 @@
 import datetime
 
 class User:
-    def __init__(self, userid):
-        self.id = userid
+    def __init__(self, user_id):
+        self.id = user_id
 
 class Confession:
     def __init__(self, id, user_id, text, allow_comments):
@@ -16,6 +16,12 @@ class Confession:
 
     def add_comment(self, comment):
         self.comments.append(comment)
+
+    def get_comment(self, comment_id):
+        return self.comments[comment_id]
+    
+    def delete_comment(self, comment):
+        self.comments.remove(comment)
     
     def add_like(self, like):
         self.likes.append(like)
@@ -40,3 +46,6 @@ class Comment:
         self.user_id = user_id
         self.text = text
         self.timestamp = datetime.datetime.now()
+    
+    def comment_created_by(self, user_id):
+        return self.user_id == user_id

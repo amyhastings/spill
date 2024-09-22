@@ -14,7 +14,7 @@
         <img src="/static/images/teapotliked.png" alt="filled teacon icon indicating user has liked post" class="unlike-button inactive" id="unlike-{{ confession.id }}">
         <p>{{ confession.get_likes_count() }}</p>
         {% if confession.allow_comments %}
-            <img src="/static/images/comments.png" alt="speech bubble icon indicating comments">
+            <a href="/spill/{{ confession.id }}"><img src="/static/images/comments.png" alt="speech bubble icon indicating comments"></a>
             <p>{{ confession.comments|length }}</p>
         {% endif %}
     </div>

@@ -17,6 +17,10 @@ header {
     position: relative;
 }
 
+.inactive {
+    display: none;
+} 
+
 .logo a img {
     height: 50px;
     line-height: 50px;
@@ -97,6 +101,19 @@ nav {
     padding: 0 10px 10px 10px;
     background-color: rgba(255,16,240,0.3);
     box-shadow: 2px 2px 2px #888;
+}
+
+.confession-info-container {
+    display: flex;
+    align-items: center;
+}
+
+.confession-info-container img {
+    width: 30px;
+}
+
+.confession-info-container p {
+    margin: 0px 10px;
 }
 
 @media (max-width: 768px) {

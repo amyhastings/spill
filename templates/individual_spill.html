@@ -4,19 +4,26 @@
 
 <div class="confession-container">
     <p>"{{ confession.text }}"</p>
-    <p>Likes: {{ confession.get_likes_count() }}</p>
-    {% if confession.allow_comments %}
-        <p>Comments: {{ confession.comments|length }}</p>
-    {% endif %}
-    {% for comment in confession.comments %}
-        <p>{{ comment.text }}</p>
-    {% endfor %}
-    {% if confession.allow_comments %}
-    <form id="comment-form" action="{{ url_for('new_comment', id = confession.id) }}" method="POST">
-        <input name="comment" placeholder="Leave a comment" type="text" autofocus>
-        <button type="submit">Submit</button>
-    </form>
-    {% endif %}
+    <div class="confession-info-container">
+        <img src="/static/images/teapot.png" alt="empty teapot icon indicating likes" class="like-button" id="like-{{ confession.id }}">
+        <img src="/static/images/teapotliked.png" alt="filled teacon icon indicating user has liked post" class="unlike-button inactive" id="unlike-{{ confession.id }}">
+        <p id="like_count-{{ confession.id }}">{{ confession.get_likes_count() }}</p>
+        {% if confession.allow_comments %}
+            <img src="/static/images/comments.png" alt="speech bubble icon indicating comments">
+            <p>{{ confession.comments|length }}</p>
+        {% endif %}
+    </div>
+    <div class="confession-comments-container">
+        {% for comment in confession.comments %}
+            <p>{{ comment.text }}</p>
+        {% endfor %}
+        {% if confession.allow_comments %}
+        <form id="comment-form" action="{{ url_for('new_comment', id = confession.id) }}" method="POST">
+            <input name="comment" placeholder="Leave a comment" type="text" autofocus>
+            <button type="submit">Submit</button>
+        </form>
+        {% endif %}
+    </div>
 </div>
 
 {% endblock %}

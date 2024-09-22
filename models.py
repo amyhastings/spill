@@ -16,6 +16,9 @@ class Confession:
 
     def add_comment(self, comment):
         self.comments.append(comment)
+    
+    def add_like(self, like):
+        self.likes.append(like)
 
     def print(self):
         print(self.text)
@@ -23,19 +26,17 @@ class Confession:
             print(comment.text)    
     
     def add_like(self, user_id):
-        new_like = Like(user_id)
-        self.likes.append(new_like)
+        if not user_id in self.likes:
+            self.likes.append(user_id)
+
+    def remove_like(self, user_id):
+        self.likes.remove(user_id)
 
     def get_likes_count(self):
         return len(self.likes)
-
 
 class Comment:
     def __init__(self, user_id, text):
         self.user_id = user_id
         self.text = text
         self.timestamp = datetime.datetime.now()
-
-class Like:
-    def __init__(self, user_id):
-        self.user_id = user_id

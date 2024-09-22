@@ -1,3 +1,5 @@
+prebaked_user_count = 16
+
 confessions = [
     {
         "text" : "I secretly browse social media profiles of people I don't know and imagine what their lives are like.",
@@ -15,20 +17,7 @@ confessions = [
                 "text" : "OMG!"
             }
         ],
-        "likes" : [
-            {
-                "user_id" : 2,
-            },
-            {
-                "user_id" : 3,
-            },
-            {
-                "user_id" : 4,
-            },
-            {
-                "user_id" : 5,
-            }
-        ]
+        "likes" : [2, 3, 4, 5],
     },
     {
         "text" : "I once created a fake online persona and had a long-distance relationship with someone for over a year.",
@@ -50,14 +39,7 @@ confessions = [
                 "text" : "Exactly! Maybe OP was just bringing love to the world."
             }
         ],
-        "likes" : [
-            {
-                "user_id" : 2,
-            },
-            {
-                "user_id" : 3,
-            },
-        ]
+        "likes" : [2, 5],
     },
     {
         "text" : "I often leave negative comments on online forums just to provoke a reaction from others.",
@@ -66,20 +48,7 @@ confessions = [
         "timestamp" : "2024-02-15:10:16",
         "allow_comments" : False,
         "comments" : [],
-        "likes" : [
-            {
-                "user_id" : 2,
-            },
-            {
-                "user_id" : 3,
-            },
-            {
-                "user_id" : 4,
-            },
-            {
-                "user_id" : 5,
-            }
-        ]
+        "likes" : [2, 3, 5],
     },
     {
         "text" : "I have a secret blog where I write about my deepest fears and insecurities, but I never share it with anyone.",
@@ -97,17 +66,7 @@ confessions = [
                 "text" : "This is so brave. I'd be too afraid that someone would find it!"
             },
         ],
-        "likes" : [
-            {
-                "user_id" : 2,
-            },
-            {
-                "user_id" : 3,
-            },
-            {
-                "user_id" : 4,
-            },
-        ]
+        "likes" : [2],
     },
     {
         "text" : "I frequently use a VPN to access blocked websites at work, even though it's against company policy.",
@@ -129,20 +88,7 @@ confessions = [
                 "text" : "As long as the sites you're accessing aren't hurting anyone, I say no harm, no foul."
             }
         ],
-        "likes" : [
-            {
-                "user_id" : 2,
-            },
-            {
-                "user_id" : 3,
-            },
-            {
-                "user_id" : 4,
-            },
-            {
-                "user_id" : 5,
-            }
-        ]
+        "likes" : [2, 3, 4, 5],
     }
 ]
 

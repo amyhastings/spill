@@ -5,15 +5,20 @@
 <h1>The tea!</h1>
 
 {% for confession in confessions %}
-<a href="/spill/view/{{ confession.id }}">
-    <div class="confession-container">
+<div class="confession-container">
+    <a href="/spill/{{ confession.id }}">
         <p>"{{ confession.text }}"</p>
-        <p>Likes: {{ confession.get_likes_count() }}</p>
+    </a>
+    <div class="confession-info-container">
+        <img src="/static/images/teapot.png" alt="empty teapot icon indicating likes" class="like-button" id="like-{{ confession.id }}">
+        <img src="/static/images/teapotliked.png" alt="filled teacon icon indicating user has liked post" class="unlike-button inactive" id="unlike-{{ confession.id }}">
+        <p>{{ confession.get_likes_count() }}</p>
         {% if confession.allow_comments %}
-            <p>Comments: {{ confession.comments|length }}</p>
+            <img src="/static/images/comments.png" alt="speech bubble icon indicating comments">
+            <p>{{ confession.comments|length }}</p>
         {% endif %}
     </div>
-</a>
+</div>
 {% endfor %}
 
 {% endblock %}

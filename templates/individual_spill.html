@@ -4,6 +4,12 @@
 
 <div class="confession-container">
     <p>"{{ confession.text }}"</p>
+    <p>{{ confession.format_timestamp() }}</p>
+    {% if confession.user_id == session['user_id'] %}
+        <form action="{{ url_for('delete_confession', confession_id = confession.id) }}" method="POST" class="delete-form">
+            <button type="submit">Delete</button>
+        </form>
+    {% endif %}
     <div class="confession-info-container">
         <img src="/static/images/teapot.png" alt="empty teapot icon indicating likes" class="like-button" id="like-{{ confession.id }}">
         <img src="/static/images/teapotliked.png" alt="filled teacon icon indicating user has liked post" class="unlike-button inactive" id="unlike-{{ confession.id }}">
@@ -17,9 +23,12 @@
         {% for comment_id in range(confession.comments|length) %}
             <div>
                 <p>{{ confession.comments[comment_id].text }}</p>
-                <form action="{{ url_for('delete_comment', confession_id = confession.id, comment_id = comment_id) }}" method="POST" class="delete-form">
-                    <button type="submit">❌</button>
-                </form>
+                <p>{{ confession.comments[comment_id].format_timestamp() }}</p>
+                {% if confession.comments[comment_id].user_id == session['user_id'] %}
+                    <form action="{{ url_for('delete_comment', confession_id = confession.id, comment_id = comment_id) }}" method="POST" class="delete-form">
+                        <button type="submit">Delete</button>
+                    </form>
+                {% endif %}
             </div>
         {% endfor %}
         {% if confession.allow_comments %}

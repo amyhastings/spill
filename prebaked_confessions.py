@@ -10,11 +10,13 @@ confessions = [
         "comments" : [
             {
                 "user_id" : 2,
-                "text": "wow!"
+                "text": "wow!",
+                "timestamp" : "2024-01-01:19:00",
             },
             {
                 "user_id" : 3,
-                "text" : "OMG!"
+                "text" : "OMG!",
+                "timestamp" : "2024-01-01:19:00",
             }
         ],
         "likes" : [2, 3, 4, 5],
@@ -28,15 +30,18 @@ confessions = [
         "comments" : [
             {
                 "user_id" : 5,
-                "text": "What a horrible thing to do! That poor person must have been devastated!"
+                "text": "What a horrible thing to do! That poor person must have been devastated!",
+                "timestamp" : "2024-01-01:19:00",
             },
             {
                 "user_id" : 6,
-                "text" : "Hang on, OP doesn't say if the person ever found out."
+                "text" : "Hang on, OP doesn't say if the person ever found out.",
+                "timestamp" : "2024-01-01:19:00",
             },
             {
                 "user_id" : 7,
-                "text" : "Exactly! Maybe OP was just bringing love to the world."
+                "text" : "Exactly! Maybe OP was just bringing love to the world.",
+                "timestamp" : "2024-01-01:19:00",
             }
         ],
         "likes" : [2, 5],
@@ -59,11 +64,13 @@ confessions = [
         "comments" : [
             {
                 "user_id" : 11,
-                "text": "This is a great idea. You have to get things off your chest."
+                "text": "This is a great idea. You have to get things off your chest.",
+                "timestamp" : "2024-01-01:19:00",
             },
             {
                 "user_id" : 12,
-                "text" : "This is so brave. I'd be too afraid that someone would find it!"
+                "text" : "This is so brave. I'd be too afraid that someone would find it!",
+                "timestamp" : "2024-01-01:19:00",
             },
         ],
         "likes" : [2],
@@ -77,15 +84,18 @@ confessions = [
         "comments" : [
             {
                 "user_id" : 14,
-                "text": "Go for it! It's what I'm doing right now."
+                "text": "Go for it! It's what I'm doing right now.",
+                "timestamp" : "2024-01-01:19:00",
             },
             {
                 "user_id" : 15,
-                "text" : "Am I the only one who thinks this is like stealing? Aren't you supposed to be working?"
+                "text" : "Am I the only one who thinks this is like stealing? Aren't you supposed to be working?",
+                "timestamp" : "2024-01-01:19:00",
             },
             {
                 "user_id" : 16,
-                "text" : "As long as the sites you're accessing aren't hurting anyone, I say no harm, no foul."
+                "text" : "As long as the sites you're accessing aren't hurting anyone, I say no harm, no foul.",
+                "timestamp" : "2024-01-01:19:00",
             }
         ],
         "likes" : [2, 3, 4, 5],

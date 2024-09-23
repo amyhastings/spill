@@ -48,13 +48,29 @@ def spilt():
 @app.route("/spill/new", methods=["POST"])
 def new_confession():
     new_confession_text = request.form["confession"]
-    allow_comments = request.form["allow_comments"]
-    new_confession_id = len(confessions_datastore) + 1
-    user_id = 1
+    if "allow_comments" in request.form:
+        allow_comments = request.form["allow_comments"]
+    else:
+        allow_comments = False
+    new_confession_id = len(confessions_datastore)
+    user_id = session['user_id']
     new_confession = Confession(new_confession_id, user_id, new_confession_text, allow_comments)
     confessions_datastore.append(new_confession)
     return redirect(url_for("spilt"))
 
+@app.route("/spill/<int:confession_id>/delete", methods=["POST"])
+def delete_confession(confession_id):
+    confession = confessions_datastore[confession_id]
+    user_id = session['user_id']
+    if confession.confession_created_by(user_id):
+        confessions_datastore.remove(confession)
+    else:
+        return redirect(url_for("error_page"))
+    return redirect(url_for("confirm_confession_deleted"))
+
+@app.route("/spill/delete_confirmed")
+def confirm_confession_deleted():
+    return render_template("delete_confirmed.html")
 
 @app.route("/spill/<int:confession_id>/comment/new", methods=["POST"])
 def new_comment(confession_id):

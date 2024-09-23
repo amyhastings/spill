@@ -5,14 +5,17 @@ class User:
         self.id = user_id
 
 class Confession:
-    def __init__(self, id, user_id, text, allow_comments):
+    def __init__(self, id, user_id, text, allow_comments, timestamp=datetime.datetime.now()):
         self.id = id
         self.user_id = user_id
         self.text = text
         self.allow_comments = allow_comments
         self.comments = []
         self.likes = []
-        self.timestamp = datetime.datetime.now()
+        self.timestamp = timestamp
+    
+    def confession_created_by(self, user_id):
+        return self.user_id == user_id
 
     def add_comment(self, comment):
         self.comments.append(comment)
@@ -40,12 +43,18 @@ class Confession:
 
     def get_likes_count(self):
         return len(self.likes)
+    
+    def format_timestamp(self):
+        return self.timestamp.strftime("%Y-%m-%d %H:%M")
 
 class Comment:
-    def __init__(self, user_id, text):
+    def __init__(self, user_id, text, timestamp=datetime.datetime.now()):
         self.user_id = user_id
         self.text = text
-        self.timestamp = datetime.datetime.now()
+        self.timestamp = timestamp
     
     def comment_created_by(self, user_id):
         return self.user_id == user_id
+    
+    def format_timestamp(self):
+        return self.timestamp.strftime("%Y-%m-%d %H:%M")

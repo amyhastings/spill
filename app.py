@@ -14,6 +14,15 @@ confessions_datastore = bootstrap_confessions()
 #write a function that takes the bootstrap data and creates confession objects and puts them in this list
 #we want the comments and votes to live here too
 
+def sort_by_oldest():
+    return sorted(confessions_datastore, key=lambda x: x.timestamp)
+
+def sort_by_newest():
+    return sorted(confessions_datastore, key=lambda x: x.timestamp, reverse=True)
+
+def sort_by_most_popular():
+    return sorted(confessions_datastore, key=lambda x: x.get_likes_count(), reverse=True)
+
 @app.before_request
 def identify_user():
     if not 'user_id' in session.keys():
@@ -28,6 +37,18 @@ def identify_user():
 @app.route('/')
 def home():
     return render_template('home.html', confessions=confessions_datastore)
+
+@app.route('/newest')
+def newest():
+    return render_template('home.html', confessions=sort_by_newest())
+
+@app.route('/oldest')
+def oldest():
+    return render_template('home.html', confessions=sort_by_oldest())
+
+@app.route('/most_popular')
+def most_popular():
+    return render_template('home.html', confessions=sort_by_most_popular())
 
 @app.route("/spill/<int:confession_id>")
 def spill_view(confession_id):
@@ -93,7 +114,6 @@ def delete_comment(confession_id, comment_id):
         confession.delete_comment(comment)
     return redirect(url_for("spill_view", confession_id=confession_id))
 
-
 @app.route("/spill/<int:confession_id>/like")
 def new_like(confession_id):
     confession = confessions_datastore[confession_id]
@@ -124,11 +144,6 @@ def random():
 @app.route("/about")
 def about():
     return render_template("about.html")
-
-
-
-
-
 
 if __name__ == '__main__':
     app.run(debug=True, port=8080)

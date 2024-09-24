@@ -11,8 +11,13 @@
         </form>
     {% endif %}
     <div class="confession-info-container">
-        <img src="/static/images/teapot.png" alt="empty teapot icon indicating likes" class="like-button" id="like-{{ confession.id }}">
-        <img src="/static/images/teapotliked.png" alt="filled teacon icon indicating user has liked post" class="unlike-button inactive" id="unlike-{{ confession.id }}">
+        {% if session['user_id'] in confession.likes %}
+            <img src="/static/images/teapotliked.png" alt="filled teacon icon indicating user has liked post" class="unlike-button" id="unlike-{{ confession.id }}">
+            <img src="/static/images/teapot.png" alt="empty teapot icon indicating likes" class="like-button inactive" id="like-{{ confession.id }}">
+        {% else %}
+            <img src="/static/images/teapotliked.png" alt="filled teacon icon indicating user has liked post" class="unlike-button inactive" id="unlike-{{ confession.id }}">
+            <img src="/static/images/teapot.png" alt="empty teapot icon indicating likes" class="like-button" id="like-{{ confession.id }}">
+        {% endif %}
         <p id="like_count-{{ confession.id }}">{{ confession.get_likes_count() }}</p>
         {% if confession.allow_comments %}
             <img src="/static/images/comments.png" alt="speech bubble icon indicating comments">

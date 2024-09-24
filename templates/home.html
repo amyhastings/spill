@@ -6,7 +6,7 @@
 
 {% for confession in confessions %}
 <div class="confession-container">
-    <a href="/spill/{{ confession.id }}">
+    <a href="/spill/{{ confession.id }}" class="confession-container-text">
         <p>"{{ confession.text }}"</p>
         <p>{{ confession.format_timestamp() }}</p>
         {% if confession.user_id == session['user_id'] %}
@@ -16,9 +16,14 @@
         {% endif %}
     </a>
     <div class="confession-info-container">
-        <img src="/static/images/teapot.png" alt="empty teapot icon indicating likes" class="like-button" id="like-{{ confession.id }}">
-        <img src="/static/images/teapotliked.png" alt="filled teacon icon indicating user has liked post" class="unlike-button inactive" id="unlike-{{ confession.id }}">
-        <p>{{ confession.get_likes_count() }}</p>
+        {% if session['user_id'] in confession.likes %}
+            <img src="/static/images/teapotliked.png" alt="filled teacon icon indicating user has liked post" class="unlike-button" id="unlike-{{ confession.id }}">
+            <img src="/static/images/teapot.png" alt="empty teapot icon indicating likes" class="like-button inactive" id="like-{{ confession.id }}">
+        {% else %}
+            <img src="/static/images/teapotliked.png" alt="filled teacon icon indicating user has liked post" class="unlike-button inactive" id="unlike-{{ confession.id }}">
+            <img src="/static/images/teapot.png" alt="empty teapot icon indicating likes" class="like-button" id="like-{{ confession.id }}">
+        {% endif %}
+        <p id="like_count-{{ confession.id }}">{{ confession.get_likes_count() }}</p>
         {% if confession.allow_comments %}
             <a href="/spill/{{ confession.id }}"><img src="/static/images/comments.png" alt="speech bubble icon indicating comments"></a>
             <p>{{ confession.comments|length }}</p>

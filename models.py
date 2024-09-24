@@ -39,7 +39,8 @@ class Confession:
             self.likes.append(user_id)
 
     def remove_like(self, user_id):
-        self.likes.remove(user_id)
+        if user_id in self.likes:
+            self.likes.remove(user_id)
 
     def get_likes_count(self):
         return len(self.likes)

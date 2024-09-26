@@ -2,7 +2,9 @@
 
 {% block main %}
 
-<h1>Spill your Tea!</h1>
+<div class="template-header">
+    <img src="/static/images/spill-header.png" alt="Spill your Tea">
+</div>
 <p>
     Do you need to get something off your chest? Spill your tea (i.e. type your confession) in the box below
     but make sure to keep it anonymous and don't include details that could identify you or others.
@@ -13,15 +15,22 @@
     you can click 'The Tea!' button to see your confession in the feed on the home page.
 </p>
 <form id="confession-form" action="{{ url_for('new_confession') }}" method="POST">
-  <input name="confession" placeholder="Spill your tea here..." type="text" autofocus>
-  <input type="checkbox" id="allow_comments" name="allow_comments" value="allow_comments">
-  <label for="allow_comments">Enable comments</label><br>
-  <button type="submit">Send</button>
+  <input id="confession-textarea" class="confession-textarea" name="confession" placeholder="Spill your tea here..." type="text" required autofocus>
+  <div class="confession-buttons">
+    <div class="enable-comments">
+        <input type="checkbox" id="allow_comments" name="allow_comments" value="allow_comments">
+        <label for="allow_comments">Enable comments</label>
+    </div>
+    <div>
+        <button class="spill-button"  type="submit">Spill my Tea!</button>
+    </div>
+  </div>
 </form>
 <div class="form-submitted inactive">
     <p>You have successfully spilt your tea!</p>
     <br>
     <button type="button" id="tea-button">The Tea!</button>
 </div>
+<script src="/static/js/confession.js"></script>
 
 {% endblock %}

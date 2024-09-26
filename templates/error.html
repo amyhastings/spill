@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 
 {% block main %}
-<p>error</p>
+<div class="template-header">
+    <img src="/static/images/error-header.png" alt="Something went wrong">
+</div>
+
+<p class="error-message">{{ message }}</p>
 
 {% endblock %}

@@ -1,3 +1,14 @@
+:root {
+    --pink: #ff10f0;
+    --pinktrans: rgba(255, 16, 240, 0.1);
+    --green: #39ff14;
+    --orange: #ff5f1f;
+    --blue: #1f51ff;
+    --bluetrans: rgba(31, 81, 255, 0.1);
+    --purple: #bc13fe;
+    --grey: #3b3b3b;
+}
+
 * {
     box-sizing: border-box;
     margin-inline-start: 0;
@@ -14,7 +25,8 @@ body {
 header {
     width: 100%;
     padding: 10px 20px;
-    position: relative;
+    display: flex;
+    justify-content: space-between;
 }
 
 .inactive {
@@ -22,21 +34,19 @@ header {
 } 
 
 .logo a img {
-    height: 50px;
-    line-height: 50px;
+    height: 70px;
+    line-height: 70px;
     border-style: none;
 }
 
 main {
-    max-width: 1000px;
+    max-width: 800px;
     width: 80%;
     margin: 0 auto;
 }
 
-
 nav {
-    color: #ff10f0;
-    position: sticky;
+    color: #000000;
     top: 0;
 }
 
@@ -48,15 +58,16 @@ nav {
 .nav-large a {
     display: inline-block;
     font-weight: bold;
-    padding: 20px;
+    font-size: 0.9em;
+    padding: 20px 10px;
     text-decoration: none;
-    color: #ff10f0;
+    color: #000000;
     text-align: center; 
 }
 
 .nav-large a:hover {
-    background-color: #ffcef6;
-    transition: 1s;
+    color: var(--pink);
+    transition: 0.5s;
 }
 
 #hamburger {
@@ -79,28 +90,120 @@ nav {
 
 .menu-label {
     font-weight: bold;
-    color: #ff10f0;
+    color: #000000;
     text-align: right;
 }
 
 .menu-content {
-    font-weight: bold;
-    padding: 0 0 0 50px;
+    padding: 30px 5px 5px 0;
 }
 
 .menu-content ul {
     list-style-type: none;
-    padding: 0 0 0 50px;
-    color: #ff10f0;
     text-align: right;
+    font-size: 0.75em;
     cursor: pointer;
 }
 
+.menu-content li {
+    padding: 5px 0px;
+}
+
+.menu-content a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.template-header img {
+    max-height: 15vh;
+    max-width: 50vw;
+    display: block;
+    margin: 0px auto 40px auto;
+}
+
+.template-header-tea img {
+    height: 15vh;
+    display: block;
+    margin: 0px auto 10px auto;
+}
+
+.welcome-container, .error-message {
+    font-size: 1.75em;
+    text-align: center;
+    padding: 0 0 40px 0;
+}
+
+.feed-button-header {
+    display: flex;
+    justify-content: right;
+    padding: 0;
+}
+
+.feed-button-header p {
+    font-size: 0.75em;
+    padding: 2px;
+}
+
+.feed-buttons-container {
+    display: flex;
+    justify-content: right;
+    padding: 0;
+}
+
+.feed-button {
+    background-color: var(--pink);
+    border-radius: 3px;
+    width: 80px;
+    padding: 0 2px;
+    margin: 5px;
+}
+
+.feed-button p {
+    padding: 0 2px;
+    font-size: 0.75em;
+    text-align: center; 
+    margin-block-start: 0.25em;
+    margin-block-end: 0.25em;
+}
+
+.feed-button a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #FFFFFF;
+}
+
+/* Adapted from https://codepen.io/piccalilli/pen/MPLzay */
 .confession-container {
     margin: 20px 0;
-    padding: 0 10px 10px 10px;
-    background-color: rgba(255,16,240,0.3);
-    box-shadow: 2px 2px 2px #888;
+    border-style: solid;
+    border-color: var(--pink);
+    padding: 15px 30px;
+    display: inline-block;
+    border: 3px solid var(--pink);
+    border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+    background: #ffffff;
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+    
+    &::before {
+        content: '';
+        border: 2px solid var(--pink);
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0) scale(1.015) rotate(0.5deg);
+        border-radius: 1% 1% 2% 4% / 2% 6% 5% 4%;
+        z-index: -1;
+    }
+}
+
+.confession-container-text {
+    text-decoration: none;
+    color: #000000;
 }
 
 .confession-info-container {
@@ -116,6 +219,259 @@ nav {
     margin: 0px 10px;
 }
 
+.confession-container-random {
+    margin: 20px 0;
+    border-style: solid;
+    border-color: var(--blue);
+    padding: 15px 30px;
+    display: inline-block;
+    border: 3px solid var(--blue);
+    border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+    background: #ffffff;
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+    
+    &::before {
+        content: '';
+        border: 2px solid var(--blue);
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0) scale(1.015) rotate(0.5deg);
+        border-radius: 1% 1% 2% 4% / 2% 6% 5% 4%;
+        z-index: -1;
+    }
+}
+
+.confession-container-my-tea {
+    margin: 20px 0;
+    border-style: solid;
+    border-color: var(--purple);
+    padding: 15px 30px;
+    display: inline-block;
+    border: 3px solid var(--purple);
+    border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+    background: #ffffff;
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+    
+    &::before {
+        content: '';
+        border: 2px solid var(--purple);
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0) scale(1.015) rotate(0.5deg);
+        border-radius: 1% 1% 2% 4% / 2% 6% 5% 4%;
+        z-index: -1;
+    }
+}
+
+.timestamp {
+    font-size: small;
+    color: var(--grey);
+    text-align: right;
+}
+
+.timestamp-comment {
+    font-size: small;
+    color: var(--grey);
+    margin-left: auto;
+}
+
+.individual-comment {
+    background-color: var(--pinktrans);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.individual-comment-random {
+    background-color: var(--bluetrans);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+input.spill-comment {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid var(--pinktrans);
+    border-radius: 4px;
+}
+
+input.confession-textarea {
+    width: 100%;
+    height: 100px;
+    padding: 12px 20px;
+    margin: 20px 0;
+    box-sizing: border-box;
+    border: 2px solid var(--orange);
+    border-radius: 4px;
+}
+
+.comment-button {
+    background-color: var(--pink);
+    color: #FFFFFF;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+    margin: 10px 0;
+}
+
+.delete-button {
+    background-color: var(--pink);
+    color: #FFFFFF;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.delete-button-random {
+    background-color: var(--blue);
+    color: #FFFFFF;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.delete-button-my-tea {
+    background-color: var(--purple);
+    color: #FFFFFF;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.delete-confirmed {
+    text-align: center;
+}
+
+.confession-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.spill-button {
+    background-color: var(--orange);
+    color: #FFFFFF;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+input[type="checkbox"] {
+    width: 1.5em;
+    height: 1.5rem;
+}
+
+.enable-comments {
+    align-items: center;
+    font-size: 0.9em;
+    display: flex;
+}
+
+.enable-comments label {
+    padding: 0 10px;
+}
+
+.form-submitted {
+    text-align: center;
+    margin: 40px;
+}
+
+.random-button {
+    background-color: var(--blue);
+    border-radius: 3px;
+    width: 150px;
+    margin: 0 auto
+}
+
+.random-button p {
+    font-size: 1.25em;
+    padding: 10px;
+    text-align: center; 
+}
+
+.random-button a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #FFFFFF;
+}
+
+.my-tea-button {
+    background-color: var(--orange);
+    border-radius: 3px;
+    width: 200px;
+    margin: 0 auto
+}
+
+.my-tea-button p {
+    font-size: 1.25em;
+    padding: 10px;
+    text-align: center; 
+}
+
+.my-tea-button a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #FFFFFF;
+}
+
+.comment-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+footer {
+    font-size: small;
+    color: var(--grey);
+    line-height: 1.5;
+    width: 100%;
+    padding: 40px;
+}
+
+.foot-contact {
+    text-align: center;
+}
+
+.foot-contact a {
+    text-decoration: underline;
+    color: var(--grey);
+}
+
+.copy {
+    display: flex;
+    justify-content: center;
+    font-size:x-small;
+}
+
+.copy p {
+    margin: 0;
+}
+
+
 @media (max-width: 768px) {
     .nav-large {
         display: none;
@@ -123,6 +479,12 @@ nav {
 
     .nav-small {
         display: block;
+    }
+
+    .welcome-container {
+        font-size: 1em;
+        text-align: center;
+        padding: 0 0 20px 0;
     }
 
 }
@@ -137,11 +499,11 @@ nav {
         display: block;
     }
 
-    .logo a {
+    /* .logo a {
         height: 100px;
         line-height: 100px;
         border-style: none;
-    }
+    } */
 
 }
 

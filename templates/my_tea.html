@@ -7,7 +7,10 @@
 </div>
 
 {% if confessions|length < 1 %}
-    <p>No tea here! Spill your own tea here or head to the home feed to comment or like!</p>
+    <div class="no-tea">
+        <p>No tea here!</p>
+        <p><a href="/spill">Spill your own tea</a> or head to the <a href="/">home feed</a> to comment or like!</p>
+    </div>
 
 {% else %}
 

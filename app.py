@@ -11,10 +11,7 @@ app.secret_key = '1gdxJCSYMHFlwP0JIEokQA'
 
 # Default data:
 users_datastore = bootstrap_users()
-# write a function to store all my users in this datastore
 confessions_datastore = bootstrap_confessions()
-#write a function that takes the bootstrap data and creates confession objects and puts them in this list
-#we want the comments and votes to live here too
 
 def get_confession_by_id(confession_id):
     for confession in confessions_datastore:
@@ -58,7 +55,6 @@ def identify_user():
     else:
         print("current user:" + str(session['user_id']))
 
-
 @app.route('/')
 def home():
     return render_template('home.html', confessions=confessions_datastore)
@@ -75,6 +71,7 @@ def oldest():
 def most_popular():
     return render_template('home.html', confessions=sort_by_most_popular())
 
+# Display an single confession, along with associated comments
 @app.route("/spill/<int:confession_id>")
 def spill_view(confession_id):
     confession = get_confession_by_id(confession_id)
@@ -82,6 +79,7 @@ def spill_view(confession_id):
         return render_template("error.html", message="Oops! We can't find this confession!")
     return render_template("individual_spill.html", confession=confession)
 
+# Display all activity for a given user
 @app.route('/my_tea')
 def my_tea():
     user_id = session['user_id']
@@ -111,6 +109,7 @@ def new_confession():
     confessions_datastore.append(new_confession)
     return redirect(url_for("spilt"))
 
+# Allows the user to delete their own confession
 @app.route("/spill/<int:confession_id>/delete", methods=["POST"])
 def delete_confession(confession_id):
     confession = get_confession_by_id(confession_id)
@@ -121,10 +120,12 @@ def delete_confession(confession_id):
         return render_template("error.html", message="You do not have permission to delete this confession.")
     return redirect(url_for("confirm_confession_deleted"))
 
+# Confirmation screen shown after confession deleted
 @app.route("/spill/delete_confirmed")
 def confirm_confession_deleted():
     return render_template("delete_confirmed.html")
 
+# Accepts new comment form submission
 @app.route("/spill/<int:confession_id>/comment/new", methods=["POST"])
 def new_comment(confession_id):
     confession = get_confession_by_id(confession_id)
@@ -139,6 +140,7 @@ def new_comment(confession_id):
     print("user adding comment:" + str(user_id))
     return redirect(url_for("spill_view", confession_id=confession_id))
 
+# Allows the user to delete their own comment
 @app.route("/spill/<int:confession_id>/comment/<int:comment_id>/delete", methods=["POST"])
 def delete_comment(confession_id, comment_id):
     confession = get_confession_by_id(confession_id)
@@ -152,6 +154,7 @@ def delete_comment(confession_id, comment_id):
         return render_template("error.html", message="You do not have permission to delete this comment.")
     return redirect(url_for("spill_view", confession_id=confession_id))
 
+# Register a new like for given confession/user
 @app.route("/spill/<int:confession_id>/like")
 def new_like(confession_id):
     confession = get_confession_by_id(confession_id)
@@ -161,6 +164,7 @@ def new_like(confession_id):
     confession.add_like(user_id)
     return ""
 
+# Remove like for a given confession/user
 @app.route("/spill/<int:confession_id>/unlike")
 def remove_like(confession_id):
     confession = get_confession_by_id(confession_id)
@@ -170,11 +174,13 @@ def remove_like(confession_id):
     confession.remove_like(user_id)
     return ""
 
+# Returns number of likes associated with a given confession as json
 @app.route("/spill/<int:confession_id>/likes_count")
 def likes_count(confession_id):
     likes_count = get_confession_by_id(confession_id).get_likes_count()
     return { "likes_count" : likes_count }
 
+# Shows a single random confession
 @app.route("/random")
 def random():
     confession_id = randrange(len(confessions_datastore))

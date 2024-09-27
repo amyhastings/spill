@@ -4,6 +4,7 @@ import datetime
 
 from models import Confession, Comment, User
 
+# Initialise the confessions_datastore with data from prebaked_confessions.py (so the site is not empty on startup)
 def bootstrap_confessions():
     confessions_datastore = []
     for confession in confessions:
@@ -16,6 +17,7 @@ def bootstrap_confessions():
         confessions_datastore.append(new_confession)
     return confessions_datastore
 
+# Create all users found in prebaked_confessions.py
 def bootstrap_users():
     users_datastore = []
     for u in range(prebaked_user_count):

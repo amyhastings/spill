@@ -127,7 +127,9 @@ nav {
     margin: 0px auto 10px auto;
 }
 
-.welcome-container, .error-message, .form-submitted, .no-tea {
+.welcome-container, .error-message,
+.form-submitted, .no-tea,
+.delete-confirmed {
     font-size: 1.75em;
     text-align: center;
     padding: 0 0 40px 0;
@@ -352,10 +354,6 @@ input.confession-textarea {
     border-radius: 5px;
     cursor: pointer;
     margin: 10px 0;
-}
-
-.delete-confirmed {
-    text-align: center;
 }
 
 .confession-buttons {

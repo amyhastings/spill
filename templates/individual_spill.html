@@ -27,8 +27,8 @@
             <p>{{ confession.comments|length }}</p>
         {% endif %}
     </div>
-    <hr>
     <div class="confession-comments-container">
+        <hr>
         {% for comment_id in range(confession.comments|length) %}
             <div class="individual-comment">
                 <p>{{ confession.comments[comment_id].text }}</p>

@@ -25,9 +25,6 @@ class Confession:
     
     def delete_comment(self, comment):
         self.comments.remove(comment)
-    
-    def add_like(self, like):
-        self.likes.append(like)
 
     def print(self):
         print(self.text)

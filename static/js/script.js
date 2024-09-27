@@ -32,23 +32,20 @@ document.addEventListener('click', function(e){
     } 
 });
 
-
-
-
 // Adapted from https://www.w3schools.com/xml/xml_http.asp
 
 function handleLike(e) {
-    // show/hide
+    // Show/hide appropriate icon
     hide(e.target);
     var fields = e.target.id.split('-');
     var confession_id = fields[1];
     var unlike = document.getElementById("unlike-" + confession_id)
     show(unlike);
-    // make call to back end
+    // Make call to back end
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            // increment counter
+            // Increment counter
             var xhttp2 = new XMLHttpRequest();
             xhttp2.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
@@ -64,17 +61,17 @@ function handleLike(e) {
 }
 
 function handleUnlike(e) {
-    // show/hide
+    // Show/hide appropriate icon
     hide(e.target);
     var fields = e.target.id.split('-');
     var confession_id = fields[1];
     var like = document.getElementById("like-" + confession_id)
     show(like);
-    // make call to back end
+    // Make call to back end
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            // increment counter
+            // Decrement likes counter
             var xhttp2 = new XMLHttpRequest();
             xhttp2.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
@@ -91,7 +88,6 @@ function handleUnlike(e) {
 
 document.addEventListener('click', function(e){
     const c = e.target.classList;
-    //e.preventDefault();
     if (c.contains("like-button")) {
         handleLike(e);
     } else if (c.contains("unlike-button")) {
